@@ -9,9 +9,10 @@
   $nome = $_POST["nomeEsc"];
   $tel = $_POST["telEsc"];
   $cnpj = $_POST["cnpjEsc"];
+  $num = $_POST["numeroEsc"];
   $codu = 2;
 
-  $sql = "INSERT INTO escolas (email_escolas, senha_escolas, bairro_escolas, rua_escolas, cod_escolas, nomeAcesso_escolas, nome_escolas, telefone_escolas, cnpj, cod_users) VALUES ,('$email', '$senha', '$bairro', '$rua', NULL, '$user', '$nome', '$tel', '$cnpj', '$codu')";
+  $sql = "INSERT INTO escolas (email_escolas, senha_escolas, bairro_escolas, rua_escolas, cod_escolas, nomeAcesso_escolas, nome_escolas, telefone_escolas, cnpj_escolas, cod_users, num_escolas) VALUES ,('$email', '$senha', '$bairro', '$rua', NULL, '$user', '$nome', '$tel', '$cnpj', '$codu','$num')";
 
   $res = mysqli_query($link,$sql);
 

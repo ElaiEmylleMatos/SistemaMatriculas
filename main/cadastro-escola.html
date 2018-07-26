@@ -68,6 +68,7 @@
                     $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
 
                         if (!("erro" in dados)) {
+                            alert('OI');
                             //Atualiza os campos com os valores da consulta.
                             $("#logradouroEsc").val("");
                             $("#bairroEsc").val("");

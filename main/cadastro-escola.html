@@ -70,10 +70,10 @@
                         if (!("erro" in dados)) {
                             alert('OI');
                             //Atualiza os campos com os valores da consulta.
-                            $("#logradouroEsc").val("");
-                            $("#bairroEsc").val("");
-                            $("#cidadeEsc").val("");
-                            $("#ufEsc").val("");
+                            $("#logradouroEsc").val(dados.logradouro);
+                            $("#bairroEsc").val(dados.bairro);
+                            $("#cidadeEsc").val(dados.localidade);
+                            $("#ufEsc").val(dados.uf);
                         } //end if.
                         else {
                             //CEP pesquisado não foi encontrado.

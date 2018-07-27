@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 26-Jul-2018 às 18:23
+-- Generation Time: 27-Jul-2018 às 14:46
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -70,15 +70,20 @@ CREATE TABLE `escolas` (
   `telefone_escolas` varchar(15) COLLATE utf8_bin NOT NULL,
   `cnpj_escolas` varchar(18) COLLATE utf8_bin NOT NULL,
   `cod_users` int(10) NOT NULL,
-  `num_escolas` varchar(5) COLLATE utf8_bin NOT NULL
+  `num_escolas` varchar(5) COLLATE utf8_bin NOT NULL,
+  `data_cadastro` date NOT NULL,
+  `cep_escolas` varchar(9) COLLATE utf8_bin NOT NULL,
+  `cidade_escolas` varchar(50) COLLATE utf8_bin NOT NULL,
+  `uf_escolas` varchar(2) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `escolas`
 --
 
-INSERT INTO `escolas` (`email_escolas`, `senha_escolas`, `bairro_escolas`, `rua_escolas`, `cod_escolas`, `nomeAcesso_escolas`, `nome_escolas`, `telefone_escolas`, `cnpj_escolas`, `cod_users`, `num_escolas`) VALUES
-('escola@teste.com', '123456', 'Joaquim Romão', 'Princesa Isabel', 1, 'medici', 'Centro Educacional Presidente Médici', '(22) 22222-2222', '22.222.222/2222-22', 1, 's/n');
+INSERT INTO `escolas` (`email_escolas`, `senha_escolas`, `bairro_escolas`, `rua_escolas`, `cod_escolas`, `nomeAcesso_escolas`, `nome_escolas`, `telefone_escolas`, `cnpj_escolas`, `cod_users`, `num_escolas`, `data_cadastro`, `cep_escolas`, `cidade_escolas`, `uf_escolas`) VALUES
+('escola@teste.com', '123456', 'Joaquim Romão', 'Princesa Isabel', 1, 'medici', 'Centro Educacional Presidente Médici', '(22) 22222-2222', '22.222.222/2222-22', 1, 's/n', '2018-07-26', '45202-170', 'Jequié', 'BA'),
+('emyllematos7@gmail.com', '123456', '', '', 3, 'panda', 'Escolinha da Vida', '(73) 98839-7290', '22.222.222/2222-22', 2, '6', '2018-07-27', '45200747', 'Jequié', 'BA');
 
 -- --------------------------------------------------------
 
@@ -202,7 +207,7 @@ ALTER TABLE `alunos`
 -- AUTO_INCREMENT for table `escolas`
 --
 ALTER TABLE `escolas`
-  MODIFY `cod_escolas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cod_escolas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `historico`

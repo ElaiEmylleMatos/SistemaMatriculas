@@ -303,17 +303,17 @@
                                               });
                                             }
                                             $('#cnpjEsc').blur(function() {
-                                              if (!(validarCNPJ($('#cnpjEsc').val()))) {
-                                                swal({
-                                                  title: 'Erro!',
-                                                  text: 'CNPJ inválido. Por favor, tente novamente.',
-                                                  icon: 'error',
-                                                });
-                                                $('#cnpjEsc').val("");
-                                              }
+                                              if (!($('#cnpjEsc').val(""))) {
+                                                if (!(validarCNPJ($('#cnpjEsc').val()))) {
+                                                  swal({
+                                                    title: 'Erro!',
+                                                    text: 'CNPJ inválido. Por favor, tente novamente.',
+                                                    icon: 'error',
+                                                  });
+                                                  $('#cnpjEsc').val("");
+                                                }
+                                              }  
                                             });
-                                            
-
                                             </script>
 
                                         </form>

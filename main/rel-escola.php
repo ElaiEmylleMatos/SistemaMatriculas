@@ -63,7 +63,7 @@
         <!-- ============================================================== -->
         <aside class="left-sidebar">
             <div class="d-flex no-block nav-text-box align-items-center">
-                <span><img src="../assets/images/logo-icon.png" alt="elegant admin template"></span>
+                <span style="color:#fff;">MENU</span>
                 <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0)"><i class="ti-menu"></i></a>
                 <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
             </div>
@@ -74,8 +74,8 @@
                     <ul id="sidebarnav">
                         <li> <a class="waves-effect waves-dark" href="cadastro-escola.php" aria-expanded="false"><i class="fa fa-pencil-square-o"></i><span class="hide-menu"></span>Cadastrar escola</a></li>
                         <li> <a class="waves-effect waves-dark" href="cadastro-est.php" aria-expanded="false"><i class="fa fa-drivers-license-o"></i><span class="hide-menu"></span>Matricular estudante</a></li>
-                        <li> <a class="waves-effect waves-dark" href="rel-escola.php" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Relatório de escolas</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="rel-est.php" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Relatório de estudantes</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="rel-escola.php" aria-expanded="false"><i class="fa fa-file-text-o"></i><span class="hide-menu">Relatório de escolas</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="rel-est.php" aria-expanded="false"><i class="fa fa-file-text-o"></i><span class="hide-menu">Relatório de estudantes</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -109,6 +109,7 @@
                                       <tr>
                                           <th>Nome da Escola</th>
                                           <th>Data de Cadastro</th>
+                                          <th>Ação</th>
                                       </tr>
                                   </thead>
                                   <tbody>
@@ -117,6 +118,7 @@
                                         echo "<tr>
                                             <td class='txt-oflo'>".$row['nome_escolas']."</td>
                                             <td class='txt-oflo'>".$row['data_cadastro']."</td>
+                                            <td class='txt-oflo'><button class='btn btn-info waves-effect waves-light m-r-5'>Editar</button><button class='btn btn-danger waves-effect waves-light m-r-10'>Excluir</button></td>
                                         </tr>";
                                       endwhile;
                                     ?>

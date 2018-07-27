@@ -127,7 +127,7 @@
         <!-- ============================================================== -->
         <aside class="left-sidebar">
             <div class="d-flex no-block nav-text-box align-items-center">
-                <span><img src="../assets/images/logo-icon.png" alt="elegant admin template"></span>
+                <span style="color:#fff;">MENU</span>
                 <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0)"><i class="ti-menu"></i></a>
                 <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
             </div>
@@ -138,8 +138,8 @@
                     <ul id="sidebarnav">
                         <li> <a class="waves-effect waves-dark" href="cadastro-escola.php" aria-expanded="false"><i class="fa fa-pencil-square-o"></i><span class="hide-menu"></span>Cadastrar escola</a></li>
                         <li> <a class="waves-effect waves-dark" href="cadastro-est.php" aria-expanded="false"><i class="fa fa-drivers-license-o"></i><span class="hide-menu"></span>Matricular estudante</a></li>
-                        <li> <a class="waves-effect waves-dark" href="rel-escola.php" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Relatório de escolas</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="rel-est.php" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Relatório de estudantes</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="rel-escola.php" aria-expanded="false"><i class="fa fa-file-text-o"></i><span class="hide-menu">Relatório de escolas</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="rel-est.php" aria-expanded="false"><i class="fa fa-file-text-o"></i><span class="hide-menu">Relatório de estudantes</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -162,26 +162,26 @@
                                             <div class="row col-sm-12 col-xs-12">
                                                 <div class="form-group col-sm-8">
                                                     <label for="nomeEsc">Nome da Instituição</label>
-                                                    <input type="text" class="form-control" name="nomeEsc" id="nomeEsc" value="Escolinha da Vida">
+                                                    <input type="text" class="form-control" name="nomeEsc" id="nomeEsc">
                                                 </div>
                                                 <div class="form-group col-sm-4">
                                                     <label for="cnpjEsc">CNPJ</label>
-                                                    <input type="text" class="form-control" name="cnpjEsc" id="cnpjEsc" value="22.222.222/2222-22">
+                                                    <input type="text" class="form-control" name="cnpjEsc" id="cnpjEsc">
                                                 </div>
                                             </div>
 
                                             <div class="row col-sm-12 col-xs-12">
-                                                <div class="form-group col-sm-7">
-                                                    <label for="logradouroEsc">Logradouro</label>
-                                                    <input type="text" class="form-control" name="logradouroEsc" id="logradouroEsc" disabled>
+                                                <div class="form-group col-sm-3">
+                                                    <label for="cepEsc">CEP</label>
+                                                    <input type="text" class="form-control" name="cepEsc" id="cepEsc"> <a target="_blank" href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="link"><i class="fa fa-question-circle" title="Não sei meu cep"> Não sei meu cep </i></a>
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     <label for="numeroEsc">Número</label>
-                                                    <input type="text" class="form-control" name="numeroEsc" id="numeroEsc" value="6">
+                                                    <input type="text" class="form-control" name="numeroEsc" id="numeroEsc">
                                                 </div>
-                                                <div class="form-group col-sm-3">
-                                                    <label for="cepEsc">CEP</label>
-                                                    <input type="text" class="form-control" name="cepEsc" id="cepEsc" value="45200747"> <a target="_blank" href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="link"><i class="fa fa-question-circle" title="Não sei meu cep"> Não sei meu cep </i></a>
+                                                <div class="form-group col-sm-7">
+                                                    <label for="logradouroEsc">Logradouro</label>
+                                                    <input type="text" class="form-control" name="logradouroEsc" id="logradouroEsc" disabled>
                                                 </div>
                                             </div>
 
@@ -202,32 +202,54 @@
                                             <div class="row col-sm-12 col-xs-12">
                                                 <div class="form-group col-sm-6">
                                                     <label for="emailEsc">Email</label>
-                                                    <input type="email" class="form-control" name="emailEsc" id="emailEsc" value="emyllematos7@gmail.com">
+                                                    <input type="email" class="form-control" name="emailEsc" id="emailEsc">
                                                 </div>
                                                 <div class="form-group col-sm-6">
                                                     <label for="telEsc">Telefone</label>
-                                                    <input type="tel" class="form-control" name="telEsc" id="telEsc" value="73988397290">
+                                                    <input type="tel" class="form-control" name="telEsc" id="telEsc">
                                                 </div>
                                             </div>
                                             <div class="row col-sm-12 col-xs-12">
                                               <div class="form-group col-sm-6">
                                                   <label for="userEsc">Nome de Usuário</label>
-                                                  <input type="text" class="form-control" name="userEsc" id="userEsc" value="panda">
+                                                  <input type="text" class="form-control" name="userEsc" id="userEsc">
                                               </div>
                                                 <div class="form-group col-sm-6">
                                                     <label for="senhaEsc">Senha</label>
                                                     <div class="input-group mb-3">
-                                                        <input type="password" class="form-control" name="senhaEsc" id="senhaEsc" value="123456">
+                                                        <input type="password" class="form-control" name="senhaEsc" onfocus="showPass()" id="senhaEsc">
                                                         <div class="input-group-append">
-                                                            <button class="btn " type="button"> <i class="fa fa-eye"></i> </button>
+                                                            <button class="btn " type="button"  id="mostrar"> <i class="fa fa-eye"></i> </button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row col-lg-12 align-center">
-                                              <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancelar</button>
-                                              <button type="submit" class="btn btn-dark waves-effect waves-light m-r-10">Cadastrar</button>
+                                              <button type="reset" class="btn btn-inverse waves-effect waves-light m-r-10">Cancelar</button>
+                                              <button type="submit" class="btn btn-dark waves-effect waves-light">Cadastrar</button>
                                             </div>
+
+                                            <script type="text/javascript">
+                                            function oi() {
+                                              swal({
+                                                title: 'Sucesso!',
+                                                text: 'Escola cadastrada',
+                                                icon: 'success',
+                                              });
+                                            }
+
+                                            function showPass() {
+                                              var botao = $('#mostrar');
+                                              var senha = $('#senhaEsc');
+                                              botao.mouseover(function() {
+                                                senha.attr("type", "text");
+                                              });
+                                              botao.mouseout(function() {
+                                                senha.attr("type", "password");
+                                              });
+                                            }
+
+                                            </script>
 
                                         </form>
                                     </div>
@@ -246,6 +268,7 @@
         </footer>
     </div>
     <!-- ============================================================== -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
     <script src="../assets/node_modules/popper/popper.min.js"></script>
     <script src="../assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>

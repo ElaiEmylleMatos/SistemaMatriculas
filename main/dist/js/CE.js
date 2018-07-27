@@ -1,4 +1,22 @@
 $(function() {
+  function oi() {
+    swal({
+      title: 'Sucesso!',
+      text: 'Escola cadastrada',
+      icon: 'success',
+    });
+  }
+
+  function showPass() {
+    var botao = $('#mostrar');
+    var senha = $('#senhaEsc');
+    botao.mouseover(function() {
+      senha.attr("type", "text");
+    });
+    botao.mouseout(function() {
+      senha.attr("type", "password");
+    });
+    
   $('#cnpjEsc').mask('00.000.000/0000-00', {reverse: true});
   $('#cepEsc').mask('00000-000', {reverse: true});
 

@@ -70,13 +70,21 @@
                         } //end if.
                         else {
                             limpa_formulário_cep();
-                            alert("CEP não encontrado.");
+                            swal({
+                              title: 'Erro!',
+                              text: 'CEP inválido. Por favor, tente novamente.',
+                              icon: 'warning',
+                            });
                         }
                     });
                 } //end if.
                 else {
                     limpa_formulário_cep();
-                    alert("Formato de CEP inválido.");
+                    swal({
+                      title: 'Erro!',
+                      text: 'Formato de CEP inválido. Por favor, tente novamente.',
+                      icon: 'warning',
+                    });
                 }
             } //end if.
             else {
@@ -284,14 +292,6 @@
                                             </div>
 
                                             <script type="text/javascript">
-                                            function oi() {
-                                              swal({
-                                                title: 'Sucesso!',
-                                                text: 'Escola cadastrada',
-                                                icon: 'success',
-                                              });
-                                            }
-
                                             function showPass() {
                                               var botao = $('#mostrar');
                                               var senha = $('#senhaEsc');
@@ -302,6 +302,7 @@
                                                 senha.attr("type", "password");
                                               });
                                             }
+
                                             $('#cnpjEsc').blur(function() {
                                               if (!($('#cnpjEsc').val()=="")) {
                                                 if (!(validarCNPJ($('#cnpjEsc').val()))) {

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -19,16 +20,17 @@
         <div class="row col-md-12">
             <div class="col-md-7"></div>
             <div class="col-md-5 fixed" style="background-color: #F9F9F9;padding-top: 90px;padding-bottom: 110px;padding-left: 70px;">
-                <form class="col-md-10" action="javascript:validar();" method="post">
+                <form class="col-md-10" action="open.php" method="post">
                     <h1 class="text-center text-uppercase">Login</h1>
+
                     <br><br>
                         <div class="form-group">
                             <label for="user">Usuário</label>
-                            <input type="text" class="form-control" id="user" placeholder="Usuário" onblur="verificaUser()">
+                            <input name="user" type="text" class="form-control" id="user" placeholder="Usuário" required>
                         </div>
                         <div class="form-group">
                             <label for="senha">Senha</label>
-                            <input type="password" class="form-control" id="senha" placeholder="Senha">
+                            <input name="senha" type="password" class="form-control" id="senha" placeholder="Senha" required>
                         </div>
                         <div class="form-group">
                             <div class="checkbox checkbox-success">
@@ -52,7 +54,7 @@
     <script src="../assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="dist/js/waves.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript">
+    <!--script type="text/javascript">
         function verificaUser() {
             var us = $('#user').value;
             var xmlhttp = new XMLHttpRequest();
@@ -71,7 +73,7 @@
             $('#senha').addClass('form-control-danger');
             //document.getElementById('user').addClass('form-control-success');
         }
-    </script>
+    </script-->
 </body>
 
 </html>

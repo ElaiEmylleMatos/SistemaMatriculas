@@ -1,4 +1,3 @@
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php
   date_default_timezone_set('America/Sao_Paulo');
   include 'conexao.php';

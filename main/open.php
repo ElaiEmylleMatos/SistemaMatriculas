@@ -1,7 +1,7 @@
 <?php
 
 
-	require('conexao.php');
+	require('../model/conexao.php');
 	session_start();
 
 	  $user = $_POST['user'];

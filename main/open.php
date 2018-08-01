@@ -7,7 +7,6 @@
 	  $user = $_POST['user'];
 	  $senha = $_POST['senha'];
 
-
 		$sql = "SELECT nomeAcesso_escolas, senha_escolas FROM escolas WHERE nomeAcesso_escolas = '$user' AND senha_escolas = '$senha'";
 
 	  $resultado = mysqli_query($link, $sql);
@@ -16,6 +15,10 @@
 
 			$_SESSION['user'] = $user;
 			$_SESSION['senha'] = $senha;
+
+			echo "  <script>
+			    alert('Usuario\n".$_SESSION['user']."');
+			  </script>";
 			if((!isset ($_SESSION['user']) == true) and (!isset ($_SESSION['senha']) == true))
 				{
 
@@ -25,6 +28,7 @@
 			}
 
 			$logado = $_SESSION['user'];
+
 			header('Location:cadastro-escola.php');
 			}
 

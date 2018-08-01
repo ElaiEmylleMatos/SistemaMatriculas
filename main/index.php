@@ -54,26 +54,6 @@
     <script src="../assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="dist/js/waves.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!--script type="text/javascript">
-        function verificaUser() {
-            var us = $('#user').value;
-            var xmlhttp = new XMLHttpRequest();
-            /*xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("txtHint").innerHTML = this.responseText;
-                }
-            };*/
-            xmlhttp.open("GET", "teste.php?q=" + us, true);
-            xmlhttp.send();
-        }
-
-        function validar() {
-            alert("Woozi");
-            $('#user').addClass('form-control-success');
-            $('#senha').addClass('form-control-danger');
-            //document.getElementById('user').addClass('form-control-success');
-        }
-    </script-->
 </body>
 
 </html>

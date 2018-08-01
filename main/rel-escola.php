@@ -1,3 +1,26 @@
+<?php
+
+include 'open.php';
+//include '../model/conexao.php';
+
+$count = 1;
+
+	if (!($_SESSION['user'] && $_SESSION['senha'])) {
+		if(session_destroy()) {
+	      header("Location: index.php");
+	    }
+	} else {
+		$login_session = $_SESSION['user'];
+		#$nome_user = $_SESSION['nome_user'];
+
+		$sql = "select nome_escolas,email_escolas,data_cadastro from escolas where nomeAcesso_escolas = '$login_session'";
+    $res = mysqli_query($link,$sql);
+
+	}
+
+
+  ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -18,7 +41,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Sistemat</p>
+            <p class="loader__label">Sistema de Matrículas</p>
         </div>
     </div>
 
@@ -82,13 +105,6 @@
             </div>
         </aside>
         <!-- ============================================================== -->
-        <?php
-          include '../model/conexao.php';
-          $sql = "select * from escolas";
-          $res = mysqli_query($link,$sql);
-
-        ?>
-        <!-- ============================================================== -->
         <div class="page-wrapper">
             <div class="container-fluid">
                 <br>
@@ -108,6 +124,7 @@
                                   <thead>
                                       <tr>
                                           <th>Nome da Escola</th>
+                                          <th>Email</th>
                                           <th>Data de Cadastro</th>
                                           <th>Ação</th>
                                       </tr>
@@ -117,10 +134,14 @@
                                       while($row = mysqli_fetch_assoc($res)):
                                         echo "<tr>
                                             <td class='txt-oflo'>".$row['nome_escolas']."</td>
+                                            <td class='txt-oflo'>".$row['email_escolas']."</td>
                                             <td class='txt-oflo'>".$row['data_cadastro']."</td>
-                                            <td class='txt-oflo'><button class='btn btn-info waves-effect waves-light m-r-5'>Editar</button><button class='btn btn-danger waves-effect waves-light m-r-10'>Excluir</button></td>
+                                            <td class='txt-oflo'><button class='btn btn-info waves-effect waves-light m-r-5' id='e$count' onclick='editarEsc(".$row['cod_escolas'].")'>Editar</button><button class='btn btn-danger waves-effect waves-light m-r-10' id='d$count' onclick='excluirEsc(".$row['cod_escolas'].")'>Excluir</button></td>
                                         </tr>";
+                                        $count = $count + 1;
                                       endwhile;
+
+                                      mysqli_close($link);
                                     ?>
                                   </tbody>
                               </table>
@@ -133,11 +154,77 @@
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
+        <script type="text/javascript">
+            function excluirEsc(cod) {
+              swal({
+                title: "Deletar escola?",
+                text: "",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  var xmlhttp = new XMLHttpRequest();
+                  xmlhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                          xmlhttp.open("GET", "getEscolas.php?q=" + cod, true);
+                      }
+                  };
+                  xmlhttp.open("GET", "../model/deleteEsc.php?q=" + cod, true);
+                  xmlhttp.send();
+
+                  swal("Escola excluída", {
+                    icon: "success",
+                  });
+                }
+              });
+
+            }
+
+            function editarEsc(cod) {
+              swal("Editar informações de escola", {
+                buttons: {
+                  cancel: "Cancelar",
+                  catch: {
+                    text: "Salvar",
+                    value: "salvar",
+                  },
+                },
+                content: "input",
+
+              })
+              .then((value) => {
+                switch (value) {
+
+                  case "salvar":
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                      }
+                    };
+                    xmlhttp.open("GET", "../model/updateEsc.php?q=" + cod, true);
+                    xmlhttp.send();
+                    swal("Sucesso", "Suas informações foram alteradas.", "success");
+                    break;
+
+                  default:
+                    //swal("Got away safely!");
+                }
+              });
+
+
+
+            }
+        </script>
+        <!-- ============================================================== -->
         <footer class="footer">
-            © 2018 <strong>Sistemat</strong> por SMILE.
+            © 2018 <strong>Sistema de Matrículas</strong> por SMILE.
         </footer>
     </div>
     <!-- ============================================================== -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
     <script src="../assets/node_modules/popper/popper.min.js"></script>
     <script src="../assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>

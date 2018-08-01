@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Jul-2018 às 14:46
+-- Generation Time: 01-Ago-2018 às 19:13
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -53,6 +53,13 @@ CREATE TABLE `alunos` (
   `cod_escolas` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Extraindo dados da tabela `alunos`
+--
+
+INSERT INTO `alunos` (`RG_alunos`, `CPF_alunos`, `cod_alunos`, `serie_alunos`, `nome_alunos`, `bairro_aluno`, `celular_alunos`, `email_alunos`, `cod_escolas`) VALUES
+('713501245', '863.508.435-76', 1, 4, 'Elai Emylle Matos de Lima', 'Gangnam', '(73)98839-7290', 'emyllematos7@gmail.com', 6);
+
 -- --------------------------------------------------------
 
 --
@@ -60,30 +67,32 @@ CREATE TABLE `alunos` (
 --
 
 CREATE TABLE `escolas` (
-  `email_escolas` varchar(100) COLLATE utf8_bin NOT NULL,
-  `senha_escolas` varchar(20) COLLATE utf8_bin NOT NULL,
-  `bairro_escolas` varchar(50) COLLATE utf8_bin NOT NULL,
-  `rua_escolas` varchar(50) COLLATE utf8_bin NOT NULL,
   `cod_escolas` int(10) NOT NULL,
-  `nomeAcesso_escolas` varchar(26) COLLATE utf8_bin NOT NULL,
   `nome_escolas` varchar(100) COLLATE utf8_bin NOT NULL,
+  `email_escolas` varchar(100) COLLATE utf8_bin NOT NULL,
+  `nomeAcesso_escolas` varchar(26) COLLATE utf8_bin NOT NULL,
+  `senha_escolas` varchar(20) COLLATE utf8_bin NOT NULL,
   `telefone_escolas` varchar(15) COLLATE utf8_bin NOT NULL,
   `cnpj_escolas` varchar(18) COLLATE utf8_bin NOT NULL,
+  `cep_escolas` varchar(9) COLLATE utf8_bin NOT NULL,
+  `rua_escolas` varchar(50) COLLATE utf8_bin NOT NULL,
+  `bairro_escolas` varchar(50) COLLATE utf8_bin NOT NULL,
+  `cidade_escolas` varchar(50) COLLATE utf8_bin NOT NULL,
+  `uf_escolas` varchar(2) COLLATE utf8_bin NOT NULL,
   `cod_users` int(10) NOT NULL,
   `num_escolas` varchar(5) COLLATE utf8_bin NOT NULL,
-  `data_cadastro` date NOT NULL,
-  `cep_escolas` varchar(9) COLLATE utf8_bin NOT NULL,
-  `cidade_escolas` varchar(50) COLLATE utf8_bin NOT NULL,
-  `uf_escolas` varchar(2) COLLATE utf8_bin NOT NULL
+  `data_cadastro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `escolas`
 --
 
-INSERT INTO `escolas` (`email_escolas`, `senha_escolas`, `bairro_escolas`, `rua_escolas`, `cod_escolas`, `nomeAcesso_escolas`, `nome_escolas`, `telefone_escolas`, `cnpj_escolas`, `cod_users`, `num_escolas`, `data_cadastro`, `cep_escolas`, `cidade_escolas`, `uf_escolas`) VALUES
-('escola@teste.com', '123456', 'Joaquim Romão', 'Princesa Isabel', 1, 'medici', 'Centro Educacional Presidente Médici', '(22) 22222-2222', '22.222.222/2222-22', 1, 's/n', '2018-07-26', '45202-170', 'Jequié', 'BA'),
-('emyllematos7@gmail.com', '123456', '', '', 3, 'panda', 'Escolinha da Vida', '(73) 98839-7290', '22.222.222/2222-22', 2, '6', '2018-07-27', '45200747', 'Jequié', 'BA');
+INSERT INTO `escolas` (`cod_escolas`, `nome_escolas`, `email_escolas`, `nomeAcesso_escolas`, `senha_escolas`, `telefone_escolas`, `cnpj_escolas`, `cep_escolas`, `rua_escolas`, `bairro_escolas`, `cidade_escolas`, `uf_escolas`, `cod_users`, `num_escolas`, `data_cadastro`) VALUES
+(1, 'Centro Educacional Presidente Médici', 'emyllematos7@gmail.com', 'panda', '123456', '(73) 98839-7290', '22.222.222/2222-22', '45200-747', 'Princesa Isabel', 'Joaquim Romão', 'Jequié', 'BA', 2, '6', '2018-07-28'),
+(2, 'Escolinha da Vida', 'emyllematos7@gmail.com', 'Elai Emylle Matos', '123', '(73) 98839-7290', '22.222.222/2222-22', '45200-747', 'Rua do Jequiezinho', 'Jequiezinho', 'Jequié', 'BA', 2, '6', '2018-07-29'),
+(3, 'Elai Emylle Matos', 'emyllematos7@gmail.com', 'Elai Emylle Matos', '12', '(73) 98839-7290', '22.222.222/2222-22', '45200-747', 'Juracy Novato', 'Joaquim Romão', 'Jequié', 'BA', 2, '2', '2018-07-28'),
+(6, 'SOPA', 'emyllematos7@gmail.com', 'sopa', 'nct', '(73) 98839-7290', '00.280.273/0001-37', '45000-000', 'Han', 'Gangnam', 'Seoul', 'KR', 2, '127', '2018-07-31');
 
 -- --------------------------------------------------------
 
@@ -166,7 +175,8 @@ ALTER TABLE `adm`
 -- Indexes for table `alunos`
 --
 ALTER TABLE `alunos`
-  ADD PRIMARY KEY (`cod_alunos`);
+  ADD PRIMARY KEY (`cod_alunos`),
+  ADD KEY `cod_escolas` (`cod_escolas`);
 
 --
 -- Indexes for table `escolas`
@@ -201,13 +211,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alunos`
 --
 ALTER TABLE `alunos`
-  MODIFY `cod_alunos` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_alunos` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `escolas`
 --
 ALTER TABLE `escolas`
-  MODIFY `cod_escolas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `cod_escolas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `historico`
@@ -230,6 +240,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Limitadores para a tabela `alunos`
+--
+ALTER TABLE `alunos`
+  ADD CONSTRAINT `alunos_ibfk_1` FOREIGN KEY (`cod_escolas`) REFERENCES `escolas` (`cod_escolas`);
 
 --
 -- Limitadores para a tabela `escolas`

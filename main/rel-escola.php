@@ -1,22 +1,22 @@
 <?php
 
-include 'open.php';
-//include '../model/conexao.php';
+//include 'open.php';
+include '../model/conexao.php';
 
 $count = 1;
 
-	if (!($_SESSION['user'] && $_SESSION['senha'])) {
+/*	if (!($_SESSION['user'] && $_SESSION['senha'])) {
 		if(session_destroy()) {
 	      header("Location: index.php");
 	    }
 	} else {
 		$login_session = $_SESSION['user'];
-		#$nome_user = $_SESSION['nome_user'];
+		#$nome_user = $_SESSION['nome_user'];*/
 
-		$sql = "select nome_escolas,email_escolas,data_cadastro from escolas where nomeAcesso_escolas = '$login_session'";
+		$sql = "select * from escolas";
     $res = mysqli_query($link,$sql);
 
-	}
+	//}
 
 
   ?>
@@ -136,12 +136,11 @@ $count = 1;
                                             <td class='txt-oflo'>".$row['nome_escolas']."</td>
                                             <td class='txt-oflo'>".$row['email_escolas']."</td>
                                             <td class='txt-oflo'>".$row['data_cadastro']."</td>
-                                            <td class='txt-oflo'><button class='btn btn-info waves-effect waves-light m-r-5' id='e$count' onclick='editarEsc(".$row['cod_escolas'].")'>Editar</button><button class='btn btn-danger waves-effect waves-light m-r-10' id='d$count' onclick='excluirEsc(".$row['cod_escolas'].")'>Excluir</button></td>
+                                            <td class='txt-oflo'><button class='btn btn-info waves-effect waves-light m-r-5' id='e$count' onclick='mostrarModal(".$row['cod_escolas'].")'>Editar</button><button class='btn btn-danger waves-effect waves-light m-r-10' id='d$count' onclick='excluirEsc(".$row['cod_escolas'].")'>Excluir</button></td>
                                         </tr>";
                                         $count = $count + 1;
                                       endwhile;
 
-                                      mysqli_close($link);
                                     ?>
                                   </tbody>
                               </table>
@@ -153,6 +152,11 @@ $count = 1;
             </div>
             <!-- ============================================================== -->
         </div>
+
+				<?php
+				include 'modal.php';
+
+				 mysqli_close($link); ?>
         <!-- ============================================================== -->
         <script type="text/javascript">
             function excluirEsc(cod) {
@@ -183,40 +187,22 @@ $count = 1;
             }
 
             function editarEsc(cod) {
-              swal("Editar informações de escola", {
-                buttons: {
-                  cancel: "Cancelar",
-                  catch: {
-                    text: "Salvar",
-                    value: "salvar",
-                  },
-                },
-                content: "input",
 
-              })
-              .then((value) => {
-                switch (value) {
-
-                  case "salvar":
-                    var xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function() {
-                      if (this.readyState == 4 && this.status == 200) {
-                        document.getElementById("txtHint").innerHTML = this.responseText;
-                      }
-                    };
-                    xmlhttp.open("GET", "../model/updateEsc.php?q=" + cod, true);
-                    xmlhttp.send();
-                    swal("Sucesso", "Suas informações foram alteradas.", "success");
-                    break;
-
-                  default:
-                    //swal("Got away safely!");
-                }
-              });
-
-
+							var xmlhttp = new XMLHttpRequest();
+							xmlhttp.onreadystatechange = function() {
+								if (this.readyState == 4 && this.status == 200) {
+									document.getElementById("txtHint").innerHTML = this.responseText;
+								}
+							};
+							xmlhttp.open("GET", "../model/updateEsc.php?q=" + cod, true);
+							xmlhttp.send();
+							swal("Sucesso", "Suas informações foram alteradas.", "success");
 
             }
+						function mostrarModal(cod) {
+							$('#myModal').modal('show');
+
+						}
         </script>
         <!-- ============================================================== -->
         <footer class="footer">

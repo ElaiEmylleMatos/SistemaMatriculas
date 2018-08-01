@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 01-Ago-2018 às 19:13
+-- Generation Time: 01-Ago-2018 às 19:36
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -47,18 +47,20 @@ CREATE TABLE `alunos` (
   `cod_alunos` int(10) NOT NULL,
   `serie_alunos` int(1) NOT NULL,
   `nome_alunos` varchar(70) COLLATE utf8_bin NOT NULL,
-  `bairro_aluno` varchar(60) COLLATE utf8_bin NOT NULL,
+  `bairro_alunos` varchar(60) COLLATE utf8_bin NOT NULL,
   `celular_alunos` varchar(14) COLLATE utf8_bin NOT NULL,
   `email_alunos` varchar(100) COLLATE utf8_bin NOT NULL,
-  `cod_escolas` int(10) NOT NULL
+  `cod_escolas` int(10) NOT NULL,
+  `rua_alunos` varchar(1000) COLLATE utf8_bin NOT NULL,
+  `data_matricula_alunos` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Extraindo dados da tabela `alunos`
 --
 
-INSERT INTO `alunos` (`RG_alunos`, `CPF_alunos`, `cod_alunos`, `serie_alunos`, `nome_alunos`, `bairro_aluno`, `celular_alunos`, `email_alunos`, `cod_escolas`) VALUES
-('713501245', '863.508.435-76', 1, 4, 'Elai Emylle Matos de Lima', 'Gangnam', '(73)98839-7290', 'emyllematos7@gmail.com', 6);
+INSERT INTO `alunos` (`RG_alunos`, `CPF_alunos`, `cod_alunos`, `serie_alunos`, `nome_alunos`, `bairro_alunos`, `celular_alunos`, `email_alunos`, `cod_escolas`, `rua_alunos`, `data_matricula_alunos`) VALUES
+('713501245', '863.508.435-76', 1, 4, 'Elai Emylle Matos de Lima', 'Gangnam', '(73)98839-7290', 'emyllematos7@gmail.com', 6, 'SM Pyeon', '2018-07-30');
 
 -- --------------------------------------------------------
 

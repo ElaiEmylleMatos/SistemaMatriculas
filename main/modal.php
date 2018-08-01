@@ -1,3 +1,11 @@
+<?php
+  $value = $_REQUEST["q"];
+  $query = "SELECT * from escolas where codigo_escolas = '$value'";
+
+  $resp = mysqli_query($link, $query);
+  $linha = mysqli_fetch_assoc($resp);
+?>
+
 <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -12,7 +20,7 @@
                   <div class="row col-sm-12 col-xs-12">
                       <div class="form-group col-sm-8">
                           <label for="nomeEsc">Nome da Instituição</label>
-                          <?php echo "<input type='text' class='form-control' name='nomeEsc' id='nomeEsc' required value='".$row['cod_escolas']."'>";?>
+                          <?php echo "<input type='text' class='form-control' name='nomeEsc' id='nomeEsc' required value='".$linha['cod_escolas']."'>";?>
                       </div>
                       <div class="form-group col-sm-4">
                           <label for="cnpjEsc">CNPJ</label>

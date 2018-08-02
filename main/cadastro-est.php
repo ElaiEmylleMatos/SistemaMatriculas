@@ -156,7 +156,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
-                                        <form action="../model/insertEsc.php" method="POST">
+                                        <form action="../model/insertEst.php" method="POST">
                                             <div class="row col-sm-12 col-xs-12">
                                                 <div class="form-group col-sm-8">
                                                     <label for="nomeEst">Nome do Estudante</label>
@@ -226,6 +226,7 @@
                                                         <option value="um-ensino-medio">1º Ano - Ensino Médio</option>
                                                         <option value="dois-ensino-medio">2º Ano - Ensino Médio</option>
                                                         <option value="tres-ensino-medio">3º Ano - Ensino Médio</option>
+                                                        <option value="quatro-ensino-medio">4º Ano - Ensino Médio</option>
                                                       </select>
                                                     </div>
                                                 </div>

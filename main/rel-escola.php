@@ -1,11 +1,11 @@
 <?php
 
-//include 'open.php';
-include '../model/conexao.php';
+require 'open.php';
+require('../model/conexao.php');
 
 $count = 1;
 
-/*	if (!($_SESSION['user'] && $_SESSION['senha'])) {
+	if (!($_SESSION['user'] && $_SESSION['senha'])) {
 		if(session_destroy()) {
 	      header("Location: index.php");
 	    }
@@ -13,13 +13,12 @@ $count = 1;
 		$login_session = $_SESSION['user'];
 		#$nome_user = $_SESSION['nome_user'];*/
 
-		$sql = "select * from escolas";
-    $res = mysqli_query($link,$sql);
+		//$sql = "select * from escolas";
+    //$res = mysqli_query($link,$sql);
 
-	//}
+	}
 
-
-  ?>
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -228,13 +227,14 @@ $count = 1;
 
         <!-- ============================================================== -->
 
-				<?php
-
-				//include 'modal.php';
-				 #mysqli_close($link); ?>
 				 <div id="caixa-modal">
 
 				 </div>
+
+				 <?php
+
+ 				//include 'modal.php';
+ 				 #mysqli_close($link); ?>
         <!-- ============================================================== -->
         <footer class="footer">
             © 2018 <strong>Sistema de Matrículas</strong> por SMILE.

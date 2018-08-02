@@ -1,6 +1,5 @@
 <?php
 
-
 	require('../model/conexao.php');
 	session_start();
 
@@ -33,7 +32,7 @@
 
 			header('Location:rel-est.php');
 			}
-
+			//Adm
 			elseif(mysqli_num_rows($fim) > 0){
 
 				$_SESSION['user'] = $user;
@@ -47,7 +46,6 @@
 
 					unset($_SESSION['user']);
 					unset($_SESSION['senha']);
-
 				}
 
 				$logado = $_SESSION['user'];

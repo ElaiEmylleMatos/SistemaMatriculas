@@ -1,22 +1,22 @@
 <?php
 
-require 'open.php';
+//require 'open.php';
 require('../model/conexao.php');
 
 $count = 1;
 
-	if (!($_SESSION['user'] && $_SESSION['senha'])) {
+/*	if (!($_SESSION['user'] && $_SESSION['senha'])) {
 		if(session_destroy()) {
-	      header("Location: index.php");
+	     # header("Location: index.php");
 	    }
 	} else {
 		$login_session = $_SESSION['user'];
 		#$nome_user = $_SESSION['nome_user'];*/
 
-		//$sql = "select * from escolas";
-    //$res = mysqli_query($link,$sql);
+		$sql = "select * from escolas";
+    $res = mysqli_query($link,$sql);
 
-	}
+	//}
 
 ?>
 

@@ -35,7 +35,6 @@ $count = 1;
     <title>Relatório de Escolas</title>
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet">
-
 </head>
 
 <body class="skin-default-dark fixed-layout">
@@ -97,83 +96,14 @@ $count = 1;
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li> <a class="waves-effect waves-dark" href="cadastro-escola.php" aria-expanded="false"><i class="fa fa-pencil-square-o"></i><span class="hide-menu"></span>Cadastrar escola</a></li>
+                        <li> <a class="waves-effect waves-dark" href="cadastro-est.php" aria-expanded="false"><i class="fa fa-drivers-license-o"></i><span class="hide-menu"></span>Matricular estudante</a></li>
                         <li> <a class="waves-effect waves-dark" href="rel-escola.php" aria-expanded="false"><i class="fa fa-file-text-o"></i><span class="hide-menu">Relatório de escolas</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="rel-est.php" aria-expanded="false"><i class="fa fa-file-text-o"></i><span class="hide-menu">Relatório de estudantes</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
         </aside>
-
-
-				<script type="text/javascript">
-						function excluirEsc(cod) {
-							swal({
-								title: "Deletar escola?",
-								text: "",
-								icon: "warning",
-								buttons: true,
-								dangerMode: true,
-							})
-							.then((willDelete) => {
-								if (willDelete) {
-									var xmlhttp = new XMLHttpRequest();
-									xmlhttp.open("GET", "../model/deleteEsc.php?q=" + cod, true);
-									xmlhttp.send();
-
-									mudarDisplayTabela();
-
-									swal("Escola excluída", {
-										icon: "success",
-									});
-								}
-							});
-
-						}
-						function mudarDisplayTabela() {
-							var xmlhttp2 = new XMLHttpRequest();
-							xmlhttp2.onreadystatechange = function() {
-									if (this.readyState == 4 && this.status == 200) {
-											document.getElementById("body-table").innerHTML = this.responseText;
-									}
-							};
-							xmlhttp2.open("GET","tables-escola.php", true);
-							xmlhttp2.send();
-						}
-
-						function editarEsc(cod) {
-
-							var xmlhttp = new XMLHttpRequest();
-							xmlhttp.onreadystatechange = function() {
-								if (this.readyState == 4 && this.status == 200) {
-									document.getElementById("txtHint").innerHTML = this.responseText;
-								}
-							};
-							xmlhttp.open("GET", "../model/updateEsc.php?q=" + cod, true);
-							xmlhttp.send();
-
-							mudarDisplayTabela();
-							swal("Sucesso", "Suas informações foram alteradas.", "success");
-
-						}
-
-
-						function mostrarModal(cod) {
-							var xmlhttp = new XMLHttpRequest();
-							xmlhttp.onreadystatechange = function() {
-								if (this.readyState == 4 && this.status == 200) {
-									document.getElementById("caixa-modal").innerHTML = this.responseText;
-								}
-							};
-							xmlhttp.open("GET", "modal.php?q=" + cod, true);
-							xmlhttp.send();
-
-							$('#myModal').modal('show');
-						}
-				</script>
-
-
-
-
         <!-- ============================================================== -->
         <div class="page-wrapper">
             <div class="container-fluid">
@@ -227,14 +157,71 @@ $count = 1;
 
 
         <!-- ============================================================== -->
+        <script type="text/javascript">
+            function excluirEsc(cod) {
+              swal({
+                title: "Deletar escola?",
+                text: "",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              })
+              .then((willDelete) => {
+                if (willDelete) {
+                  var xmlhttp = new XMLHttpRequest();
+                  xmlhttp.onreadystatechange = function() {
+                      if (this.readyState == 4 && this.status == 200) {
+                          document.getElementById("body-table").innerHTML = this.responseText;
+                      }
+                  };
+                  xmlhttp.open("GET", "../model/deleteEsc.php?q=" + cod, true);
+                  xmlhttp.send();
+
+                  swal("Escola excluída", {
+                    icon: "success",
+                  });
+                }
+              });
+
+            }
+
+            function editarEsc(cod) {
+
+							var xmlhttp = new XMLHttpRequest();
+							xmlhttp.onreadystatechange = function() {
+								if (this.readyState == 4 && this.status == 200) {
+									document.getElementById("txtHint").innerHTML = this.responseText;
+								}
+							};
+							xmlhttp.open("GET", "../model/updateEsc.php?q=" + cod, true);
+							xmlhttp.send();
+							swal("Sucesso", "Suas informações foram alteradas.", "success");
+
+            }
+
+
+						function mostrarModal(cod) {
+							var xmlhttp = new XMLHttpRequest();
+							xmlhttp.open("GET", "../model/modal.php?q=" + cod, true);
+							xmlhttp.send();
+
+							$.ajax({
+    type: "POST",
+    url: "modal.php",
+    data: {nomeVariavel: cod,
+    success: function (data) {
+        // aqui pode usar o que o PHP retorna
+    }}
+});
+
+$('#myModal').modal('show');
+						}
+        </script>
 
 				<?php
 
-				//include 'modal.php';
+				include 'modal.php';
 				 #mysqli_close($link); ?>
-				 <div id="caixa-modal">
-
-				 </div>
         <!-- ============================================================== -->
         <footer class="footer">
             © 2018 <strong>Sistema de Matrículas</strong> por SMILE.

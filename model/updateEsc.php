@@ -19,9 +19,12 @@
   $codu = 2;
   $data = date ("Y-m-d");
 
+  if ($num == "") {
+    $num = "s/n";
+  }
 
   if (!($email==""&&$senha==""&&$bairro==""&&$rua==""&&$user==""&&$nome==""&&$tel==""&&$cnpj==""&&$num==""&&$uf==""&&$cidade==""&&$cep=="")) {
-$sql="UPDATE escolas SET email_escolas='$email',senha_escolas='$senha',bairro_escolas='$bairro',rua_escolas='$rua',nomeAcesso_escolas='$user',nome_escolas='$nome',telefone_escolas='$tel',cnpj_escolas='$cnpj',num_escolas='$num',data_cadastro='$data',cep_escolas='$cep',cidade_escolas='$cidade',uf_escolas='$uf' WHERE cod_escolas=$value";
+$sql="UPDATE escolas SET email_escolas='$email',senha_escolas='$senha',bairro_escolas='$bairro',rua_escolas='$rua',nomeAcesso_escolas='$user',nome_escolas='$nome',telefone_escolas='$tel',cnpj_escolas='$cnpj',num_escolas='$num',data_cadastro='$data',cep_escolas='$cep',cidade_escolas='$cidade',uf_escolas='$uf' WHERE cod_escolas='$value'";
     $res = mysqli_query($link,$sql);
   }
 

@@ -11,6 +11,6 @@
 
     }*/
     #nao tem como dar um refresh na pag nao
-    header('location:../main/rel-escola.php');
+    echo "<script>mudarDisplayTabela();</script>";
     mysqli_close($link);
 ?>

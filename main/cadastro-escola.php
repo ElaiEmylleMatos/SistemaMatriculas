@@ -1,25 +1,3 @@
-<?php
-
-//include 'open.php';
-
-//echo $logado;
-/*echo "  <script>
-    alert('".$_SESSION['user']."');
-  </script>";
-
-	/*if (($_SESSION['user'] && $_SESSION['senha'])) {
-		/*if(session_destroy()) {
-	      header("Location: index.php");
-	    }
-      $login_session = $_SESSION['user'];
-	} else {
-
-
-	}*/
-
-  ?>
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -34,6 +12,8 @@
     <title>Cadastro de escola</title>
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="dist/js/CE.js"></script>
 </head>
 
 <body class="skin-default-dark fixed-layout">
@@ -43,177 +23,6 @@
             <p class="loader__label">Sistema de Matrículas</p>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-    $(function() {
-      $('#cnpjEsc').mask('00.000.000/0000-00', {reverse: true});
-      $('#cepEsc').mask('00000-000', {reverse: true});
-
-      var SPMaskBehavior = function (val) {
-        return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-      },
-      spOptions = {
-        onKeyPress: function(val, e, field, options) {
-            field.mask(SPMaskBehavior.apply({}, arguments), options);
-          }
-      };
-
-      $('#telEsc').mask(SPMaskBehavior, spOptions);
-
-        function limpa_formulário_cep() {
-            $("#logradouroEsc").val("");
-            $("#bairroEsc").val("");
-            $("#cidadeEsc").val("");
-            $("#ufEsc").val("");
-
-        }
-
-        //Quando o campo cep perde o foco.
-        $("#cepEsc").blur(function() {
-
-            var cep = $(this).val().replace(/\D/g, '');
-
-            if (cep != "") {
-
-                var validacep = /^[0-9]{8}$/;
-
-                //Valida o formato do CEP.
-                if(validacep.test(cep)) {
-
-                    $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-
-                        if (!("erro" in dados)) {
-                            $("#logradouroEsc").val(dados.logradouro);
-                            $("#bairroEsc").val(dados.bairro);
-                            $("#cidadeEsc").val(dados.localidade);
-                            $("#ufEsc").val(dados.uf);
-                        } //end if.
-                        else {
-                            limpa_formulário_cep();
-                            swal({
-                              title: 'Erro!',
-                              text: 'CEP inválido. Por favor, tente novamente.',
-                              icon: 'warning',
-                            });
-                        }
-                    });
-                } //end if.
-                else {
-                    limpa_formulário_cep();
-                    swal({
-                      title: 'Erro!',
-                      text: 'Formato de CEP inválido. Por favor, tente novamente.',
-                      icon: 'warning',
-                    });
-                }
-            } //end if.
-            else {
-                limpa_formulário_cep();
-            }
-        });
-
-    function validarCNPJ(cnpj) {
-
-        cnpj = cnpj.replace(/[^\d]+/g,'');
-
-        if(cnpj == '') return false;
-
-        if (cnpj.length != 14)
-            return false;
-
-        // Elimina CNPJs invalidos conhecidos
-        if (cnpj == "00000000000000" ||
-            cnpj == "11111111111111" ||
-            cnpj == "22222222222222" ||
-            cnpj == "33333333333333" ||
-            cnpj == "44444444444444" ||
-            cnpj == "55555555555555" ||
-            cnpj == "66666666666666" ||
-            cnpj == "77777777777777" ||
-            cnpj == "88888888888888" ||
-            cnpj == "99999999999999")
-            return false;
-
-        // Valida DVs
-        tamanho = cnpj.length - 2
-        numeros = cnpj.substring(0,tamanho);
-        digitos = cnpj.substring(tamanho);
-        soma = 0;
-        pos = tamanho - 7;
-        for (i = tamanho; i >= 1; i--) {
-          soma += numeros.charAt(tamanho - i) * pos--;
-          if (pos < 2)
-                pos = 9;
-        }
-        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-        if (resultado != digitos.charAt(0))
-            return false;
-
-        tamanho = tamanho + 1;
-        numeros = cnpj.substring(0,tamanho);
-        soma = 0;
-        pos = tamanho - 7;
-        for (i = tamanho; i >= 1; i--) {
-          soma += numeros.charAt(tamanho - i) * pos--;
-          if (pos < 2)
-                pos = 9;
-        }
-        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-        if (resultado != digitos.charAt(1))
-              return false;
-
-        return true;
-
-    }
-
-    function telefone_validation(telefone){
-    //retira todos os caracteres menos os numeros
-    telefone = telefone.replace(/\D/g,'');
-
-    //verifica se tem a qtde de numero correto
-    if(!(telefone.length >= 10 && telefone.length <= 11)) {
-      return false;
-    }
-    else if (telefone.length == 11 && parseInt(telefone.substring(2, 3)) != 9) {
-      return false;
-    } else {
-      return true;
-    }
-
-    //verifica se não é nenhum numero digitado errado (propositalmente)
-    for(var n = 0; n < 10; n++){
-    	//um for de 0 a 9.
-      //estou utilizando o metodo Array(q+1).join(n) onde "q" é a quantidade e n é o
-      //caractere a ser repetido
-    	if(telefone == new Array(11).join(n) || telefone == new Array(12).join(n))
-      {  return false;
-      } else {
-        return true;
-      }
-    }
-      //DDDs validos
-      var codigosDDD = [11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 24, 27, 28, 31, 32, 33, 34, 35, 37, 38, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 53,
-    54, 55, 61, 62,    64, 63, 65, 66, 67, 68, 69, 71, 73, 74, 75, 77, 79, 81, 82, 83, 84, 85,
-    86, 87, 88, 89, 91, 92, 93, 94, 95, 96, 97, 98, 99];
-      //verifica se o DDD é valido
-      if(codigosDDD.indexOf(parseInt(telefone.substring(0, 2))) == -1) {
-        return false;
-      } else if (telefone.length == 10 && [2, 3, 4, 5, 7].indexOf(parseInt(telefone.substring(2, 3))) == -1) {
-        return false;
-      } else {
-        return true;
-      }
-
-    }
-
-});
-
-
-
-</script>
-
     <!-- ============================================================== -->
     <div id="main-wrapper">
         <header class="topbar">
@@ -265,10 +74,8 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="cadastro-escola.php" aria-expanded="false"><i class="fa fa-pencil-square-o"></i><span class="hide-menu"></span>Cadastrar escola</a></li>
-                        <li> <a class="waves-effect waves-dark" href="cadastro-est.php" aria-expanded="false"><i class="fa fa-drivers-license-o"></i><span class="hide-menu"></span>Matricular estudante</a></li>
-                        <li> <a class="waves-effect waves-dark" href="rel-escola.php" aria-expanded="false"><i class="fa fa-file-text-o"></i><span class="hide-menu">Relatório de escolas</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="rel-est.php" aria-expanded="false"><i class="fa fa-file-text-o"></i><span class="hide-menu">Relatório de estudantes</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="cadastro-escola.php" aria-expanded="false"><i class="fa fa-pencil-square-o"></i><span class="hide-menu"></span>Cadastrar escola</a> </li>
+                        <li> <a class="waves-effect waves-dark" href="rel-escola.php" aria-expanded="false"><i class="fa fa-file-text-o"></i><span class="hide-menu">Relatório de escolas</span></a> </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -287,15 +94,22 @@
 
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
-                                        <form action="../model/insertEsc.php" method="POST">
+                                        <form action="../model/insertEsc.php" method="POST" class="needs-validation" novalidate>
+
                                             <div class="row col-sm-12 col-xs-12">
                                                 <div class="form-group col-sm-8">
                                                     <label for="nomeEsc">Nome da Instituição</label>
                                                     <input type="text" class="form-control" name="nomeEsc" id="nomeEsc" required>
+                                                    <div class="invalid-feedback">
+                                                      Informe o nome da Instituição.
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-sm-4">
                                                     <label for="cnpjEsc">CNPJ</label>
                                                     <input type="text" class="form-control" name="cnpjEsc" id="cnpjEsc" required>
+                                                    <div class="invalid-feedback" id="cnpj-feedback">
+                                                      Informe um CNPJ válido.
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -303,14 +117,20 @@
                                                 <div class="form-group col-sm-3">
                                                     <label for="cepEsc">CEP</label>
                                                     <input type="text" class="form-control" name="cepEsc" id="cepEsc" required> <a target="_blank" href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="link"><i class="fa fa-question-circle" title="Não sei meu cep"> Não sei meu cep </i></a>
+                                                    <div class="invalid-feedback">
+                                                      Informe um CEP válido.
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     <label for="numeroEsc">Número</label>
-                                                    <input type="text" class="form-control" name="numeroEsc" id="numeroEsc" required>
+                                                    <input type="text" class="form-control" name="numeroEsc" id="numeroEsc">
                                                 </div>
                                                 <div class="form-group col-sm-7">
                                                     <label for="logradouroEsc">Logradouro</label>
                                                     <input type="text" class="form-control" name="logradouroEsc" id="logradouroEsc" required>
+                                                    <div class="invalid-feedback">
+                                                      Informe um logradouro válido.
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -318,30 +138,50 @@
                                                 <div class="form-group col-sm-5">
                                                     <label for="bairroEsc">Bairro</label>
                                                     <input type="text" class="form-control" name="bairroEsc" id="bairroEsc" required>
+                                                    <div class="invalid-feedback">
+                                                      Informe um bairro válido.
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-sm-5">
                                                     <label for="cidadeEsc">Cidade</label>
                                                     <input type="text" class="form-control" name="cidadeEsc" id="cidadeEsc" required>
+                                                    <div class="invalid-feedback">
+                                                      Informe uma cidade válida.
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     <label for="ufEsc">UF</label>
                                                     <input type="text" class="form-control" name="ufEsc" id="ufEsc" required>
+                                                    <div class="invalid-feedback">
+                                                      Informe uma UF válida.
+                                                    </div>
                                                 </div>
                                             </div>
+
                                             <div class="row col-sm-12 col-xs-12">
                                                 <div class="form-group col-sm-6">
                                                     <label for="emailEsc">Email</label>
                                                     <input type="email" class="form-control" name="emailEsc" id="emailEsc" required>
+                                                    <div class="invalid-feedback">
+                                                      Informe um email válido.
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-sm-6">
                                                     <label for="telEsc">Telefone</label>
                                                     <input type="tel" class="form-control" name="telEsc" id="telEsc" required>
+                                                    <div class="invalid-feedback" id="tel-feedback">
+                                                      Informe um telefone válido.
+                                                    </div>
                                                 </div>
                                             </div>
+
                                             <div class="row col-sm-12 col-xs-12">
                                               <div class="form-group col-sm-6">
                                                   <label for="userEsc">Nome de Usuário</label>
                                                   <input type="text" class="form-control" name="userEsc" id="userEsc" required>
+                                                  <div class="invalid-feedback">
+                                                    Informe um nome de usuário válido.
+                                                  </div>
                                               </div>
                                                 <div class="form-group col-sm-6">
                                                     <label for="senhaEsc">Senha</label>
@@ -351,67 +191,16 @@
                                                             <button class="btn " type="button"  id="mostrar"> <i class="fa fa-eye"></i> </button>
                                                         </div>
                                                     </div>
+                                                    <div class="invalid-feedback">
+                                                      Informe uma senha válida.
+                                                    </div>
                                                 </div>
                                             </div>
+
                                             <div class="row col-lg-12 align-center">
                                               <button type="reset" class="btn btn-inverse waves-effect waves-light m-r-10" onclick="validarForm()">Cancelar</button>
                                               <button type="submit" class="btn btn-dark waves-effect waves-light">Cadastrar</button>
                                             </div>
-
-                                            <script type="text/javascript">
-                                            function showPass() {
-                                              var botao = $('#mostrar');
-                                              var senha = $('#senhaEsc');
-                                              botao.mouseover(function() {
-                                                senha.attr("type", "text");
-                                              });
-                                              botao.mouseout(function() {
-                                                senha.attr("type", "password");
-                                              });
-                                            }
-
-                                            $('#cnpjEsc').blur(function() {
-                                              if (!($('#cnpjEsc').val()=="")) {
-                                                if (!(validarCNPJ($('#cnpjEsc').val()))) {
-                                                  swal({
-                                                    title: 'Erro!',
-                                                    text: 'CNPJ inválido. Por favor, tente novamente.',
-                                                    icon: 'error',
-                                                  });
-                                                  $('#cnpjEsc').val("");
-                                                }
-                                              }
-                                            });
-
-                                            $('#telEsc').blur(function() {
-                                              //alert($('#telEsc').val());
-                                              if (!($('#telEsc').val()=="")) {
-                                                if (!(telefone_validation($('#telEsc').val()))) {
-                                                  swal({
-                                                    title: 'Erro!',
-                                                    text: 'Telefone inválido. Por favor, tente novamente.',
-                                                    icon: 'error',
-                                                  });
-                                                  alert("erro");
-                                                  $('#telEsc').val("");
-                                                }
-                                              }
-                                            });
-
-                                            function validarForm() {
-                                              if(!($('input').val()=="")) {
-                                                alert("arroz");
-                                                $('form').submit();
-                                              } else {
-                                                swal({
-                                                  title: 'Erro!',
-                                                  text: 'Campos requeridos vazios.\n Por favor, tente novamente.',
-                                                  icon: 'error',
-                                                });
-                                              }
-                                            }
-                                            </script>
-
                                         </form>
                                     </div>
                                 </div>
@@ -429,7 +218,6 @@
         </footer>
     </div>
     <!-- ============================================================== -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
     <script src="../assets/node_modules/popper/popper.min.js"></script>
     <script src="../assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -440,6 +228,25 @@
     <script src="../assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
     <script src="dist/js/jquery.mask.min.js"></script>
+
+    <script>
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
 </body>
 
 </html>

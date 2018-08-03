@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 01-Ago-2018 às 19:36
+-- Generation Time: 02-Ago-2018 às 22:54
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -34,6 +34,14 @@ CREATE TABLE `adm` (
   `nomeAcesso_adm` varchar(20) COLLATE utf8_bin NOT NULL,
   `cod_users` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Extraindo dados da tabela `adm`
+--
+
+INSERT INTO `adm` (`senha_adm`, `cod_adm`, `nomeAcesso_adm`, `cod_users`) VALUES
+('123', 1, 'adm', 1),
+('1234567', 2, 'root', 1);
 
 -- --------------------------------------------------------
 
@@ -95,20 +103,6 @@ INSERT INTO `escolas` (`cod_escolas`, `nome_escolas`, `email_escolas`, `nomeAces
 (2, 'Escolinha da Vida', 'emyllematos7@gmail.com', 'Elai Emylle Matos', '123', '(73) 98839-7290', '22.222.222/2222-22', '45200-747', 'Rua do Jequiezinho', 'Jequiezinho', 'Jequié', 'BA', 2, '6', '2018-07-29'),
 (3, 'Elai Emylle Matos', 'emyllematos7@gmail.com', 'Elai Emylle Matos', '12', '(73) 98839-7290', '22.222.222/2222-22', '45200-747', 'Juracy Novato', 'Joaquim Romão', 'Jequié', 'BA', 2, '2', '2018-07-28'),
 (6, 'SOPA', 'emyllematos7@gmail.com', 'sopa', 'nct', '(73) 98839-7290', '00.280.273/0001-37', '45000-000', 'Han', 'Gangnam', 'Seoul', 'KR', 2, '127', '2018-07-31');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `historico`
---
-
-CREATE TABLE `historico` (
-  `descricao_hist` varchar(300) COLLATE utf8_bin NOT NULL,
-  `cod_escolas` int(10) NOT NULL,
-  `cod_adm` int(10) NOT NULL,
-  `cod_hist` int(10) NOT NULL,
-  `data_hist` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -188,12 +182,6 @@ ALTER TABLE `escolas`
   ADD KEY `cod_users` (`cod_users`) USING BTREE;
 
 --
--- Indexes for table `historico`
---
-ALTER TABLE `historico`
-  ADD PRIMARY KEY (`cod_hist`);
-
---
 -- Indexes for table `relatorios`
 --
 ALTER TABLE `relatorios`
@@ -220,12 +208,6 @@ ALTER TABLE `alunos`
 --
 ALTER TABLE `escolas`
   MODIFY `cod_escolas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `historico`
---
-ALTER TABLE `historico`
-  MODIFY `cod_hist` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `relatorios`

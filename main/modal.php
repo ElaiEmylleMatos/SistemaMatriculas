@@ -1,7 +1,6 @@
 <?php
   include '../model/conexao.php';
   $value = $_REQUEST["q"];
-  echo "<script>alert('$value');</script>";
   $query = "SELECT * from escolas where cod_escolas = '$value'";
 
   $resp = mysqli_query($link, $query);
@@ -9,7 +8,10 @@
 ?>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="dist/js/jquery.mask.min.js"></script>
 <script src="dist/js/CE.js"></script>
+
+
 
 <div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -21,7 +23,7 @@
 
       <div class="row modal-body">
           <div class="col-sm-12 col-xs-12">
-              <form action="../model/updateEsc.php" method="POST">
+              <form action="../model/updateEsc.php?q=$value" method="POST" class="needs-validation" novalidate>
                   <div class="row col-sm-12 col-xs-12">
                       <div class="form-group col-sm-8">
                           <label for="nomeEsc">Nome da Instituição</label>
@@ -87,50 +89,47 @@
                           </div>
                       </div>
                   </div>
-
               </form>
           </div>
       </div>
 
         <div class="modal-footer">
           <button type="reset" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <?php echo '<button type="submit" class="btn btn-dark waves-effect waves-light"  onclick="editarEsc('.$value.')">Salvar</button>';?>
+          <?php echo '<button type="submit" class="btn btn-dark waves-effect waves-light"  onclick="editarEsc('.$value.') ">Salvar</button>';?>
         </div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
-  (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-      var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  })();
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
 
-function editarEsc(codi) {
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("txtHint").innerHTML = this.responseText;
-    }
-  };
-  xmlhttp.open("GET", "../model/updateEsc.php?q=" + codi, true);
+/*function editarEsc() {
+  /*var xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("GET", "../model/updateEsc.php?q=" + cod, true);
   xmlhttp.send();
 
   mudarDisplayTabela();
-  swal("Sucesso", "Suas informações foram alteradas.", "success");
-
-}
+  $('#myModal').modal('hide');
+  swal("Sucesso", "Suas informações foram alteradas.", "success");*/
+  /*alert("ola\ncod: ");
+//
+}*/
 
 </script>
+<script src="../assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>

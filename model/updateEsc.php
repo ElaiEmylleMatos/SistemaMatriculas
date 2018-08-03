@@ -29,13 +29,8 @@ $sql="UPDATE escolas SET email_escolas='$email',senha_escolas='$senha',bairro_es
   }
 
 if ($res) {
-  echo "<script>swal('Sucesso', 'Suas informações foram alteradas.', 'success');</script>";
   header('location:../main/rel-escola.php');
 }
-
-#Como alterar um elemento html por php, tipo um valor pra um input
-#Como fazer o header funcionar em AJAX, tipo, não atualiza a tabela quando exclui
-#Como funciona a função submit do jQuery
 
   mysqli_close($link);
 ?>

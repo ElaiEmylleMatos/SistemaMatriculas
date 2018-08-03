@@ -151,7 +151,10 @@ $count = 1;
 							xmlhttp.send();
 
 							mudarDisplayTabela();
+							$('#myModal').modal('hide');
 							swal("Sucesso", "Suas informações foram alteradas.", "success");
+
+
 
 						}
 
@@ -168,6 +171,11 @@ $count = 1;
 
 							$('#myModal').modal('show');
 						}
+
+
+				</script>
+				<script type="text/javascript">
+
 				</script>
 
 
@@ -233,8 +241,7 @@ $count = 1;
 
 				 <?php
 
- 				//include 'modal.php';
- 				 #mysqli_close($link); ?>
+ 				 mysqli_close($link); ?>
         <!-- ============================================================== -->
         <footer class="footer">
             © 2018 <strong>Sistema de Matrículas</strong> por SMILE.

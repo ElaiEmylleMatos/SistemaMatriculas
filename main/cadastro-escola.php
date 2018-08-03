@@ -53,8 +53,6 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="img-circle fa fa-user-circle"></i> </a>
                             <ul class="nav-item dropdown-menu" id="dropdown">
-                              <li> <a href="#"><?= $login_session?></a></li>
-                              <li><hr></li>
                               <li> <a href="logout.php">Sair</a></li>
                             </ul>
                         </li>
@@ -198,7 +196,7 @@
                                             </div>
 
                                             <div class="row col-lg-12 align-center">
-                                              <button type="reset" class="btn btn-inverse waves-effect waves-light m-r-10" onclick="validarForm()">Cancelar</button>
+                                              <button type="reset" class="btn btn-inverse waves-effect waves-light m-r-10">Cancelar</button>
                                               <button type="submit" class="btn btn-dark waves-effect waves-light">Cadastrar</button>
                                             </div>
                                         </form>

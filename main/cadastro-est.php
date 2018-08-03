@@ -41,7 +41,7 @@
       $('#celEst').mask(SPMaskBehavior, spOptions);
 
         function limpa_formulário_cep() {
-            $("#logradouroEst").val("");
+            $("#lograEst").val("");
             $("#bairroEst").val("");
             $("#cidadeEst").val("");
             $("#ufEst").val("");
@@ -63,7 +63,7 @@
                     $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
 
                         if (!("erro" in dados)) {
-                            $("#logradouroEst").val(dados.logradouro);
+                            $("#lograEst").val(dados.logradouro);
                             $("#bairroEst").val(dados.bairro);
                             $("#cidadeEst").val(dados.localidade);
                             $("#ufEst").val(dados.uf);
@@ -156,7 +156,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
-                                        <form action="../model/insertEst.php" method="POST">
+                                        <form action="../model/insertEst.php" method="POST" class="needs-validation" novalidate>
                                             <div class="row col-sm-12 col-xs-12">
                                                 <div class="form-group col-sm-8">
                                                     <label for="nomeEst">Nome do Estudante</label>
@@ -178,27 +178,27 @@
                                                     <input type="text" class="form-control" name="cepEst" id="cepEst"> <a target="_blank" href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="link"><i class="fa fa-question-circle" title="Não sei meu cep"> Não sei meu cep </i></a>
                                                 </div>
                                                 <div class="form-group col-sm-2">
-                                                    <label for="numeroEst">Número</label>
-                                                    <input type="text" class="form-control" name="numeroEst" id="numeroEst">
+                                                    <label for="numEst">Número</label>
+                                                    <input type="text" class="form-control" name="numEst" id="numEst">
                                                 </div>
                                                 <div class="form-group col-sm-7">
-                                                    <label for="logradouroEst">Logradouro</label>
-                                                    <input type="text" class="form-control" name="logradouroEst" id="logradouroEst" disabled>
+                                                    <label for="lograEst">Logradouro</label>
+                                                    <input type="text" class="form-control" name="lograEst" id="lograEst" >
                                                 </div>
                                             </div>
 
                                             <div class="row col-sm-12 col-xs-12">
                                                 <div class="form-group col-sm-5">
                                                     <label for="bairroEst">Bairro</label>
-                                                    <input type="text" class="form-control" name="bairroEst" id="bairroEst" disabled>
+                                                    <input type="text" class="form-control" name="bairroEst" id="bairroEst" >
                                                 </div>
                                                 <div class="form-group col-sm-5">
                                                     <label for="cidadeEst">Cidade</label>
-                                                    <input type="text" class="form-control" name="cidadeEst" id="cidadeEst" disabled>
+                                                    <input type="text" class="form-control" name="cidadeEst" id="cidadeEst" >
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     <label for="ufEst">UF</label>
-                                                    <input type="text" class="form-control" name="ufEsc" id="ufEst" disabled>
+                                                    <input type="text" class="form-control" name="ufEst" id="ufEst" >
                                                 </div>
                                             </div>
                                             <div class="row col-sm-12 col-xs-12">
@@ -274,6 +274,25 @@
     <script src="../assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
     <script src="dist/js/custom.min.js"></script>
     <script src="dist/js/jquery.mask.min.js"></script>
+
+    <script>
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
 </body>
 
 </html>

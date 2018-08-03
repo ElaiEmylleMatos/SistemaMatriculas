@@ -16,7 +16,7 @@
 
 			$_SESSION['user'] = $user;
 			$_SESSION['senha'] = $senha;
-
+			
 			echo "  <script>
 			    alert('Usuario\n".$_SESSION['user']."');
 			  </script>";

@@ -143,14 +143,12 @@ $(function() {
     if (!(c=="")) {
       if (!validarCNPJ(c)) {
         $('#cnpjEsc').val("");
-        $('#cnpj-feedback').style.display = "block";
+        $('#cnpj-feedback').show();
+      } else {
+        $('#cnpj-feedback').hide();
       }
     }
   });
-
-  function teste() {
-
-  }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //Quando sai do campo Telefone aplica a validação
   $('#telEsc').blur(function() {
@@ -159,8 +157,9 @@ $(function() {
     if (!(tel=="")) {
       if (!telefone_validation(tel)) {
         $('#telEsc').val("");
-        alert("erro");
-        $('#tel-feedback').style.display = "block";
+        $('#tel-feedback').show();
+      } else {
+        $('#tel-feedback').hide();
       }
     }
   });

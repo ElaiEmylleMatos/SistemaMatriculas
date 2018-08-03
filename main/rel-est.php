@@ -81,9 +81,17 @@
         </aside>
         <!-- ============================================================== -->
         <?php
-          include '../model/conexao.php';
+          //require 'open.php';
+          require '../model/conexao.php';
+        //  require '../model/insertEst';
+          //$cod = $_SESSION['cod'];
+          //$sql='SELECT * from alunos a join escolas e on e.cod_escolas = a.cod_escolas where nomeAcesso_escolas="'.$logado.'"';
+
           $sql = "select * from alunos";
           $res = mysqli_query($link,$sql);
+
+        //  echo $logado;
+          //  var_dump($_SESSION['user']);
         ?>
         <!-- ============================================================== -->
         <div class="page-wrapper">
@@ -105,11 +113,9 @@
                                   <thead>
                                       <tr>
                                           <th>Nome da Estudante</th>
-                                          <th>RG</th>
                                           <th>CPF</th>
                                           <th>Série</th>
                                           <th>Bairro</th>
-                                          <th>Rua</th>
                                           <th>Telefone</th>
                                           <th>Email</th>
                                           <th>Data de matrícula</th>
@@ -121,11 +127,9 @@
                                       while($row = mysqli_fetch_assoc($res)):
                                         echo "<tr>
                                             <td class='txt-oflo'>".$row['nome_alunos']."</td>
-                                            <td class='txt-oflo'>".$row['RG_alunos']."</td>
                                             <td class='txt-oflo'>".$row['CPF_alunos']."</td>
                                             <td class='txt-oflo'>".$row['serie_alunos']."</td>
                                             <td class='txt-oflo'>".$row['bairro_alunos']."</td>
-                                            <td class='txt-oflo'>".$row['rua_alunos']."</td>
                                             <td class='txt-oflo'>".$row['celular_alunos']."</td>
                                             <td class='txt-oflo'>".$row['email_alunos']."</td>
                                             <td class='txt-oflo'>".$row['data_matricula_alunos']."</td>

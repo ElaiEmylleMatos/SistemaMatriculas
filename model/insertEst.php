@@ -1,33 +1,31 @@
 <?php
   date_default_timezone_set('America/Sao_Paulo');
-  include 'conexao.php';
+  require '../main/open.php';
+  require 'conexao.php';
 
-  $nome = $_POST["nomeEst"];
-  $rg = $_POST["rgEst"];
-  $cpf = $_POST["cpfEst"];
-  $cep = $_POST["cepEst"];
-  $num = $_POST["numEst"];
-  $logra = $_POST["lograEst"];
-  $bairro = $_POST["bairroEst"];
-  $cidade = $_POST["cidadeEst"];
-  $uf = $_POST["ufEst"];
-  $email = $_POST["emailEst"];
-  $cel = $_POST["celEst"];
-  $serie = $_POST["serieEst"];
-  $codu = 1;
+  $nome = addslashes($_POST["nomeEst"]);
+  $rg = addslashes($_POST["rgEst"]);
+  $cpf = addslashes($_POST["cpfEst"]);
+  $cep = addslashes($_POST["cepEst"]);
+  $num = addslashes($_POST["numEst"]);
+  $logra = addslashes($_POST["lograEst"]);
+  $bairro = addslashes($_POST["bairroEst"]);
+  $cidade = addslashes($_POST["cidadeEst"]);
+  $uf = addslashes($_POST["ufEst"]);
+  $email = addslashes($_POST["emailEst"]);
+  $cel = addslashes($_POST["celEst"]);
+  $serie = addslashes($_POST["serieEst"]);
   $data = date ("Y-m-d");
-
-  echo "<script>
-  alert($nome);
-  </script>";
+  $cod = $_SESSION['cod'];
 
   if ($num == "") {
     $num = "s/n";
   }
 
-if (!($nome==""&&$rg==""&&$cpf==""&&$cep==""&&$num==""&&$logra==""&&$bairro==""&&$cidade==""&&$uf==""&&$email==""&&$cel==""&&$serie=="")) {
-  $sql = "INSERT INTO alunos (RG_alunos, CPF_alunos, cod_alunos, serie_alunos, nome_alunos, bairro_alunos, celular_alunos, email_alunos, celular_alunos, serie_alunos,cod_alunos, cod_alunos) VALUES ('$email', '$senha', '$bairro', '$rua', NULL, '$user', '$nome', '$tel', '$cnpj', '$codu','$num','$data','$uf','$cidade','$cep', '$codu')";
+if (!($nome==""&&$rg==""&&$cpf==""&&$cep==""&&$num==""&&$logra==""&&$bairro==""&&$cidade==""&&$uf==""&&$email==""&&$cel=="")) {
+$sql="INSERT INTO alunos(RG_alunos,CPF_alunos,cod_alunos,serie_alunos,nome_alunos,bairro_alunos,celular_alunos,email_alunos,cod_escolas,rua_alunos,data_matricula_alunos,num_alunos,cidade_alunos,uf_alunos,cep_alunos)VALUES('$rg','$cpf',NULL,'$serie','$nome','$bairro','$cel','$email','$cod','$logra','$data','$num','$cidade','$uf','$cep')";
   $res = mysqli_query($link,$sql);
+  echo $sql;
 }
 
 	if ($res) {
@@ -43,7 +41,7 @@ if (!($nome==""&&$rg==""&&$cpf==""&&$cep==""&&$num==""&&$logra==""&&$bairro==""&
 		echo "<script>
     swal({
       title: 'Erro!',
-      text: 'Não foi possível cadastrar essa pessoa. Por favor, tente novamente.',
+      text: 'Não foi possível cadastrar estudante. Por favor, tente novamente.',
       icon: 'error',
     });</script>";
     header("location:../main/cadastro-est.php");

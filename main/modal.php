@@ -23,13 +23,17 @@
 
       <div class="row modal-body">
           <div class="col-sm-12 col-xs-12">
-              <form action="../model/updateEsc.php?q=$value" method="POST" class="needs-validation" novalidate>
+              <form action="../model/updateEsc.php" method="POST" class="needs-validation" novalidate>
                   <div class="row col-sm-12 col-xs-12">
-                      <div class="form-group col-sm-8">
+                      <div class="form-group col-sm-7">
                           <label for="nomeEsc">Nome da Instituição</label>
                           <?php echo "<input type='text' class='form-control' name='nomeEsc' id='nomeEsc' required value='".$linha['nome_escolas']."'>";?>
                       </div>
-                      <div class="form-group col-sm-4">
+                      <div class="form-group col-sm-2">
+                          <label for="siglaEsc">Sigla</label>
+                          <?php echo '<input type="text" class="form-control" name="siglaEsc" id="siglaEsc" value="'.$linha['sigla_escolas'].'">';?>
+                      </div>
+                      <div class="form-group col-sm-3">
                           <label for="cnpjEsc">CNPJ</label>
                           <?php echo "<input type='text' class='form-control' name='cnpjEsc' id='cnpjEsc' required value='".$linha['cnpj_escolas']."'>";?>
                       </div>

@@ -16,15 +16,18 @@
   $uf = addslashes($_POST["ufEsc"]);
   $cidade = addslashes($_POST["cidadeEsc"]);
   $cep = addslashes($_POST["cepEsc"]);
+  $sig = addslashes($_POST["siglaEsc"]);
   $codu = 2;
   $data = date ("Y-m-d");
+
+  echo "<script>alert('".$nome."');</script>";
 
   if ($num == "") {
     $num = "s/n";
   }
 
   if (!($email==""&&$senha==""&&$bairro==""&&$rua==""&&$user==""&&$nome==""&&$tel==""&&$cnpj==""&&$num==""&&$uf==""&&$cidade==""&&$cep=="")) {
-$sql="UPDATE escolas SET email_escolas='$email',senha_escolas='$senha',bairro_escolas='$bairro',rua_escolas='$rua',nomeAcesso_escolas='$user',nome_escolas='$nome',telefone_escolas='$tel',cnpj_escolas='$cnpj',num_escolas='$num',data_cadastro='$data',cep_escolas='$cep',cidade_escolas='$cidade',uf_escolas='$uf' WHERE cod_escolas='$value'";
+$sql="UPDATE escolas SET email_escolas='$email',senha_escolas='$senha',bairro_escolas='$bairro',rua_escolas='$rua',nomeAcesso_escolas='$user',nome_escolas='$nome',telefone_escolas='$tel',cnpj_escolas='$cnpj',num_escolas='$num',data_cadastro='$data',cep_escolas='$cep',cidade_escolas='$cidade',uf_escolas='$uf',sigla_escolas='$sig' WHERE cod_escolas='$value'";
     $res = mysqli_query($link,$sql);
   }
 

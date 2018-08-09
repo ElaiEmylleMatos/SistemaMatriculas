@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>Cadastro de escola</title>
+    <title>Editar Cadastro de escola</title>
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -87,12 +87,12 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h1>Cadastro de Escola</h1>
+                                <h1>Editar Cadastro de Escola</h1>
                                 <p class="text-muted m-b-30 font-13"> Todos os campos são obrigatórios.</p><br>
 
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
-                                        <form action="../model/insertEsc.php" method="POST" class="needs-validation" novalidate>
+                                        <form action="../model/updateEsc.php" method="POST" class="needs-validation" novalidate>
 
                                             <div class="row col-sm-12 col-xs-12">
                                                 <div class="form-group col-sm-7">
@@ -200,8 +200,8 @@
                                             </div>
 
                                             <div class="row col-lg-12 align-center">
-                                              <button type="reset" class="btn btn-inverse waves-effect waves-light m-r-10">Cancelar</button>
-                                              <button type="submit" class="btn btn-dark waves-effect waves-light">Cadastrar</button>
+                                              <button type="reset" class="btn btn-inverse waves-effect waves-light m-r-10">Cancelar qnd cancelar volta pro relatorio</button>
+                                              <button type="submit" class="btn btn-dark waves-effect waves-light">Salvar</button>
                                             </div>
                                         </form>
                                     </div>

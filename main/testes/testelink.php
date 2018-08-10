@@ -23,8 +23,8 @@
                   <th>#</th>
                   <th>Nome da Escola</th>
                   <th>Email</th>
-                  <th style="width:10%">Data de Cadastro</th>
-                  <th>Ação</th>
+                  <th style="width:12%">Data de Cadastro</th>
+                  <th style="width:25%">Ação</th>
                 </tr>
               </thead>
               <tbody id="body-table">

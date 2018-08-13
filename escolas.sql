@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 10-Ago-2018 às 18:27
+-- Generation Time: 12-Ago-2018 às 05:43
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -52,9 +52,11 @@ CREATE TABLE `escolas` (
 --
 
 INSERT INTO `escolas` (`cod_escolas`, `nome_escolas`, `email_escolas`, `nomeAcesso_escolas`, `senha_escolas`, `telefone_escolas`, `cnpj_escolas`, `cep_escolas`, `rua_escolas`, `bairro_escolas`, `cidade_escolas`, `uf_escolas`, `cod_users`, `num_escolas`, `data_cadastro`, `sigla_escolas`) VALUES
-(1, 'Centro Educacional Presidente Médici', 'emyllematos7@gmail.com', 'panda', '123456', '(73) 98839-7290', '22.222.222/2222-22', '45200-747', 'Princesa Isabel', 'Joaquim Romão', 'Jequié', 'BA', 2, '6', '2018-07-28', ''),
-(2, 'School Of Performing Arts', 'emyllematos7@gmail.com', 'sopa', 'nct', '(73) 98839-7290', '00.280.273/0001-37', '45200-747', 'Neo City Avenue', 'Gangnam', 'Seoul', 'KR', 2, '127', '2018-08-09', 'SOPA'),
-(3, '', '', '', '', '', '', '', '', '', '', '', 2, 's/n', '2018-08-09', '');
+(1, 'Centro Educacional Presidente Médici', 'Presidente.medici@outlook.com', 'panda', '123456', '(73) 3525-7694', '33.019.548/0001-32', '45200-747', 'Princesa Isabel', 'Joaquim Romão', 'Jequié', 'BA', 2, '6', '2018-08-12', ''),
+(2, 'School Of Performing Arts', 'Seoul_arts@sopa.kr', 'sopa', 'nct', '(73) 98853-8245', '00.280.273/0001-37', '45200-747', 'Neo City Avenue', 'Gangnam', 'Seoul', 'KR', 2, '127', '2018-08-10', 'SOPA'),
+(3, 'Emylle Matos Academy', 'emyllematos7@gmail.com', 'emylle', '123456', '73988397290', '62.726.310/0001-45', '45200-747', 'Neo City Avenue', 'Neo Bairro', 'Neo City', 'KR', 2, 's/n', '2018-08-12', 'EMA'),
+(4, 'Escolinha da Vida Anormal', 'escola@eva.com', 'ui', '123', '(73) 98839-7290', '21.759.758/0001-88', '45200-747', 'Rua Demosthenes Pires', 'Joaquim Romão', 'Jequié', 'BA', 2, 's/n', '2018-08-12', 'EVA'),
+(5, 'Escola Stray Kids', 'Stray.kids@jyp.kr', 'taeyongah', '123456', '(73) 98839-7290', '01.773.518/0001-20', '45200-747', 'Han Hyunjinie', 'Jisung', 'Seoul', 'KR', 2, 's/n', '2018-08-12', '');
 
 --
 -- Indexes for dumped tables
@@ -75,7 +77,7 @@ ALTER TABLE `escolas`
 -- AUTO_INCREMENT for table `escolas`
 --
 ALTER TABLE `escolas`
-  MODIFY `cod_escolas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cod_escolas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

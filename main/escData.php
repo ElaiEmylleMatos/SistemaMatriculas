@@ -1,5 +1,5 @@
 <?php
-  include_once '../../model/conexao.php';
+  include_once '../model/conexao.php';
   if($_REQUEST['empid']) {
     $sql = "SELECT * FROM escolas WHERE cod_escolas=".$_REQUEST['empid'];
   	$resultset = mysqli_query($link, $sql) or die("database error:". mysqli_error($link));

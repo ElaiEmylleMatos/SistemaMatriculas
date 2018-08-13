@@ -16,7 +16,7 @@
 
 			$_SESSION['user'] = $user;
 			$_SESSION['senha'] = $senha;
-			
+
 			echo "  <script>
 			    alert('Usuario\n".$_SESSION['user']."');
 			  </script>";
@@ -41,7 +41,7 @@
 				echo "  <script>
 						alert('Usuario\n".$_SESSION['user']."');
 					</script>";
-				if((!isset ($_SESSION['user']) == true) and (!isset ($_SESSION['senha']) == true))
+				if((!isset($_SESSION['user']) == true) and (!isset($_SESSION['senha']) == true))
 					{
 
 					unset($_SESSION['user']);

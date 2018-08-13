@@ -1,17 +1,9 @@
 <?php
-    include 'conexao.php';
+    include_once 'conexao.php';
 
-    $value = $_REQUEST["q"];
+    $value = $_REQUEST["id"];
     $del = "DELETE from escolas where cod_escolas=$value";
     $ans = mysqli_query($link,$del);
-
-    /*if ($ans) {
-
-    } else {
-
-    }*/
-    #se deletar uma escola, não tem que deletar os alunos também?
-    #nao tem como dar um refresh na pag nao
-    echo "<script>mudarDisplayTabela();</script>";
+    //IMPLEMENTAR METODO PARA EXCLUIR ALUNOS TAMBÉM
     mysqli_close($link);
 ?>

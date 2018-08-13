@@ -1,39 +1,31 @@
 <?php
   date_default_timezone_set('America/Sao_Paulo');
-  include 'conexao.php';
+  include_once 'conexao.php';
 
-  $value = $_REQUEST["q"];
-
-  $email = addslashes($_POST["emailEsc"]);
-  $senha = addslashes($_POST["senhaEsc"]);
-  $bairro = addslashes($_POST["bairroEsc"]);
-  $rua = addslashes($_POST["logradouroEsc"]);
-  $user = addslashes($_POST["userEsc"]);
-  $nome = addslashes($_POST["nomeEsc"]);
-  $tel = addslashes($_POST["telEsc"]);
-  $cnpj = addslashes($_POST["cnpjEsc"]);
-  $num = addslashes($_POST["numeroEsc"]);
-  $uf = addslashes($_POST["ufEsc"]);
-  $cidade = addslashes($_POST["cidadeEsc"]);
-  $cep = addslashes($_POST["cepEsc"]);
-  $sig = addslashes($_POST["siglaEsc"]);
+  $value = strip_tags($_POST["id"]);
+  $email = mysqli_real_escape_string($link,$_POST["emailEsc"]);
+  $bairro = mysqli_real_escape_string($link,$_POST["bairroEsc"]);
+  $rua = mysqli_real_escape_string($link,$_POST["logradouroEsc"]);
+  $nome = mysqli_real_escape_string($link,$_REQUEST["nomeEsc"]);
+  $tel = mysqli_real_escape_string($link,$_POST["telEsc"]);
+  $cnpj = mysqli_real_escape_string($link,$_POST["cnpjEsc"]);
+  $num = mysqli_real_escape_string($link,$_POST["numeroEsc"]);
+  $uf = mysqli_real_escape_string($link,$_POST["ufEsc"]);
+  $cidade = mysqli_real_escape_string($link,$_POST["cidadeEsc"]);
+  $cep = mysqli_real_escape_string($link,$_POST["cepEsc"]);
+  $sig = mysqli_real_escape_string($link,$_POST["siglaEsc"]);
   $codu = 2;
   $data = date ("Y-m-d");
-
-  echo "<script>alert('".$nome."');</script>";
 
   if ($num == "") {
     $num = "s/n";
   }
 
-  if (!($email==""&&$senha==""&&$bairro==""&&$rua==""&&$user==""&&$nome==""&&$tel==""&&$cnpj==""&&$num==""&&$uf==""&&$cidade==""&&$cep=="")) {
-$sql="UPDATE escolas SET email_escolas='$email',senha_escolas='$senha',bairro_escolas='$bairro',rua_escolas='$rua',nomeAcesso_escolas='$user',nome_escolas='$nome',telefone_escolas='$tel',cnpj_escolas='$cnpj',num_escolas='$num',data_cadastro='$data',cep_escolas='$cep',cidade_escolas='$cidade',uf_escolas='$uf',sigla_escolas='$sig' WHERE cod_escolas='$value'";
+  if (!($email==""&&$bairro==""&&$rua==""&&$nome==""&&$tel==""&&$cnpj==""&&$num==""&&$uf==""&&$cidade==""&&$cep=="")) {
+    $sql="UPDATE escolas SET email_escolas='$email',bairro_escolas='$bairro',rua_escolas='$rua',nome_escolas='$nome',telefone_escolas='$tel',cnpj_escolas='$cnpj',num_escolas='$num',data_cadastro='$data',cep_escolas='$cep',cidade_escolas='$cidade',uf_escolas=upper('$uf'),sigla_escolas=upper('$sig') WHERE cod_escolas='$value'";
     $res = mysqli_query($link,$sql);
   }
 
-if ($res) {
-  header('location:../main/rel-escola.php');
-}
-
   mysqli_close($link);
+
 ?>

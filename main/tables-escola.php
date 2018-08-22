@@ -18,7 +18,7 @@
     ?>
     <tr>
       <td class='txt-oflo'>
-        <input type="checkbox" class="emp_checkbox" data-esc-id="<?=$row["cod_escolas"]; ?>"> <?=$row["cod_escolas"]; ?>
+        <?=$row["cod_escolas"]; ?>
       </td>
       <td class='txt-oflo'>
         <?php
@@ -40,7 +40,6 @@
       <td class='txt-oflo'>
         <button data-toggle="modal" data-target="#detalhes" data-id='<?php echo $row["cod_escolas"]; ?>' id="getDetalhes" class='btn btn-success waves-effect waves-light m-r-5'>Detalhes</button>
         <button data-toggle="modal" data-target="#editar" data-idi='<?php echo $row["cod_escolas"]; ?>' id="getEditar" class='btn btn-info waves-effect waves-light m-r-5'>Editar</button>
-
         <button class='btn btn-danger waves-effect waves-light m-r-10' data-id='<?php echo $row["cod_escolas"]; ?>' id='getExcluir'>Excluir</button>
       </td>
     </tr>
